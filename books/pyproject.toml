@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "django_course"
+version = "0.1.0"
+description = ""
+authors = ["Krokodile <denisovila328@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^5.0.2"
+djangorestframework = "^3.14.0"
+django-rest-swagger = "^2.2.0"
+drf-yasg = "^1.21.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
