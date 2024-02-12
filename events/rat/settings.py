@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'events'
+    'events',
+    'rest_framework_swagger',       # Swagger 
+    'rest_framework',               # Django rest framework
+    'drf_yasg'   
 ]
 
 MIDDLEWARE = [
