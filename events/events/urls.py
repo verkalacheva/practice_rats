@@ -7,6 +7,6 @@ path('events/get/<int:id_user>/', EventView.as_view({'get': 'get_by_user'}), nam
 path('events/get/<int:id>', EventView.as_view({'get': 'get_by_id'}), name='events-by-id'), # вывести мероприятие по айди
 path('events/get/<str:id_status>', EventView.as_view({'get': 'get_by_id_status'}), name='events-by-id-status'), # вывести все мероприятия по айди статуса
 path('events/create', EventView.as_view({'post':'create'}), name='create'), #создать мероприятие
-path('offers/delete/<int:id>', EventView.as_view({'delete':'destroy'}), name='delete-event'),#удалить мероприятие по его айди
+path('events/delete/<int:id>', EventView.as_view({'delete':'destroy'}), name='delete-event'),#удалить мероприятие по его айди
 
 ]
