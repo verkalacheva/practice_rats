@@ -33,6 +33,11 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
+path('events/list', EventView.as_view({'get': 'list'}), name='all-events'), # вывести все заявки из таблицы
+path('events/get/<int:id_user>/', EventView.as_view({'get': 'get_by_user'}), name='events-by-user'), #вывести все мероприятия от человека по его айди
+path('events/get/<int:id>', EventView.as_view({'get': 'get_by_id'}), name='events-by-id'), # вывести мероприятие по айди
+path('events/get/<str:id_status>', EventView.as_view({'get': 'get_by_id_status'}), name='events-by-id-status'), # вывести все мероприятия по айди статуса
+path('events/create', EventView.as_view({'post':'create'}), name='create'), #создать мероприятие
+path('offers/delete/<int:id>', EventView.as_view({'delete':'destroy'}), name='delete-event'),#удалить мероприятие по его айди
+
 ]
