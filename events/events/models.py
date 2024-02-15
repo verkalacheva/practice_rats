@@ -12,7 +12,6 @@ class Events(models.Model):
     )
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=250, unique_for_date='publish')
     id_user = models.ForeignKey(User, related_name='event', on_delete=models.CASCADE)
     description = models.TextField()
     date = models.DateTimeField(default=timezone.now)
