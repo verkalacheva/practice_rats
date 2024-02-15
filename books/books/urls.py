@@ -16,5 +16,4 @@ urlpatterns = [
     path('archive/get/<int:id_user>', ArchiveView.as_view({'get': 'retrieve'}), name='archive-by-id'),
     path('archive/add', ArchiveView.as_view({'post': 'create'}), name='add'),
     path('archive/delete/<int:id_book>/<int:id_user>', ArchiveView.as_view({'delete': 'destroy'}), name='all-bo'),
-
 ]
