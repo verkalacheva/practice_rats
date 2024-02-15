@@ -20,3 +20,7 @@ class ArchiveSerializer(serializers.ModelSerializer):
     class Meta():
         model = Archive
         fields = "__all__"
+
+class MatchSerializer(serializers.ModelSerializer):
+    book = models.IntegerField()
+    has_book = models.IntegerField()  #
