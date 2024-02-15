@@ -57,11 +57,10 @@ class LoginView(viewsets.ModelViewSet):
             form = LoginForm()
         return render(request, 'users/login.html', {'form': form})
 
-# @swagger_auto_schema(tags=["Profile"])
-#@api_view(['GET'])
-# @authentication_classes([TokenAuthentication])
-# @permission_classes([IsAuthenticated])
-def get_user_profile(request):
-    profile = Profile.objects.get(user=request.user)
-    serializer = ProfileDetailSerializer(profile)
-    return Response(serializer.data)
+class ProfileView(viewsets.ModelViewSet):
+    serializer_class = ProfileDetailSerializer
+    @swagger_auto_schema(tags=["Profile"])
+    def get_user_profile(self, request, *args, **kwargs):
+        data = list(User.objects.filter(username=kwargs['username']).values_list('id'))
+        profile_data = list(Profile.objects.filter(user_id__in=data).values())
+        return Response(profile_data)
