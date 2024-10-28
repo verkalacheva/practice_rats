@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('books/list', BookView.as_view({'get': 'list'}), name='all-books'),
-    path('books/get/<int:id>/', BookView.as_view({'get': 'retrieve'}), name='books-by-user'),
+    path('books/get/<int:id>/', BookView.as_view({'get': 'retrieve'}), name='books-by-id'),
     path('books/get_by_author/<int:author_id>/', BookView.as_view({'get': 'get_by_author'}), name='books-by-author'),
     path('books/add', BookView.as_view({'post': 'create'}), name='add-book'),
     path('author/list', AuthorView.as_view({'get': 'list'}), name='all-authors'),

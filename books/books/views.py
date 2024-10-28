@@ -23,10 +23,10 @@ class BookView(viewsets.ModelViewSet):
         if product_serializer_data.is_valid():
             product_serializer_data.save()
             status_code = status.HTTP_201_CREATED
-            return Response({"message": "Book Added Sucessfully", "status": status_code})
+            return Response({"message": "Book Added Sucessfully"}, status = status_code)
         else:
             status_code = status.HTTP_400_BAD_REQUEST
-            return Response({"message": "please fill the datails", "status": status_code})
+            return Response({"message": "please fill the datails"},status = status_code)
 
 
     def get_by_author(self, request, *args, **kwargs):
@@ -48,10 +48,10 @@ class AuthorView(viewsets.ModelViewSet):
         if product_serializer_data.is_valid():
             product_serializer_data.save()
             status_code = status.HTTP_201_CREATED
-            return Response({"message": "Author Added Sucessfully", "status": status_code})
+            return Response({"message": "Author Added Sucessfully"}, status=status_code)
         else:
             status_code = status.HTTP_400_BAD_REQUEST
-            return Response({"message": "please fill the datails", "status": status_code})
+            return Response({"message": "please fill the datails"}, status=status_code)
 
 
 class WishesView(viewsets.ModelViewSet):
@@ -71,20 +71,20 @@ class WishesView(viewsets.ModelViewSet):
         if product_serializer_data.is_valid():
             product_serializer_data.save()
             status_code = status.HTTP_201_CREATED
-            return Response({"message": "Wish Added Sucessfully", "status": status_code})
+            return Response({"message": "Wish Added Sucessfully"}, status = status_code)
         else:
             status_code = status.HTTP_400_BAD_REQUEST
-            return Response({"message": "please fill the datails", "status": status_code})
+            return Response({"message": "please fill the datails"}, status = status_code)
 
     def destroy(self, request, *args, **kwargs):
         product_data = Wishes.objects.filter(id_user=kwargs['id_user']).filter(id_book=kwargs['id_book'])
         if product_data:
             product_data.delete()
             status_code = status.HTTP_201_CREATED
-            return Response({"message": "Wish deleted Sucessfully", "status": status_code})
+            return Response({"message": "Wish deleted Sucessfully"}, status = status_code)
         else:
             status_code = status.HTTP_400_BAD_REQUEST
-            return Response({"message": "Product data not found", "status": status_code})
+            return Response({"message": "Product data not found"}, status = status_code)
     def match(self, request, *args, **kwargs):
         wishes_data = list(Wishes.objects.filter(id_user=kwargs['id_wants']).values_list('id_book', flat=True))
 
@@ -115,19 +115,19 @@ class ArchiveView(viewsets.ModelViewSet):
         if product_serializer_data.is_valid():
             product_serializer_data.save()
             status_code = status.HTTP_201_CREATED
-            return Response({"message": "Book Added Sucessfully to Archive", "status": status_code})
+            return Response({"message": "Book Added Sucessfully to Archive"}, status = status_code)
         else:
             status_code = status.HTTP_400_BAD_REQUEST
-            return Response({"message": "please fill the datails", "status": status_code})
+            return Response({"message": "please fill the datails"}, status = status_code)
 
     def destroy(self, request, *args, **kwargs):
         product_data = Archive.objects.filter(id_user=kwargs['id_user']).filter(id_book=kwargs['id_book'])
         if product_data:
             product_data.delete()
             status_code = status.HTTP_201_CREATED
-            return Response({"message": "Archive deleted Sucessfully", "status": status_code})
+            return Response({"message": "Archive deleted Sucessfully"}, status = status_code)
         else:
             status_code = status.HTTP_400_BAD_REQUEST
-            return Response({"message": "Product data not found", "status": status_code})
+            return Response({"message": "Product data not found"}, status = status_code)
 
 
