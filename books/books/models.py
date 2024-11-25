@@ -13,13 +13,28 @@ class Book(models.Model): # all books in/. our database
     #photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
     #objects = models.Manager()
 
-class Wishes(models.Model): # books that user wants
+class Archive(models.Model):
     id_book = models.ForeignKey(Book, on_delete=models.CASCADE)
     id_user = models.IntegerField()
+    
+    class Meta:
+        verbose_name = 'Архив'
+        verbose_name_plural = 'Архив'
 
-class Archive(models.Model): # books that user has
+    def __str__(self):
+        return f'{self.id_book.name} на полке у пользователя  {self.id_user}(хочет отдать)'
+
+class Wishes(models.Model):
     id_book = models.ForeignKey(Book, on_delete=models.CASCADE)
     id_user = models.IntegerField()
+    
+    class Meta:
+        verbose_name = 'Желание'
+        verbose_name_plural = 'Желания'
+
+    def __str__(self):
+        return f'{self.id_book.name} желание пользователя {self.id_user}'
+
 
 
 

@@ -3,7 +3,9 @@ from rest_framework import status
 from rest_framework import viewsets
 from .serializers import *
 from .models import *
-# Create your views here.
+from django.db import transaction
+from models import Offer
+
 
 
 class BookView(viewsets.ModelViewSet):
@@ -87,7 +89,8 @@ class WishesView(viewsets.ModelViewSet):
             return Response({"message": "Product data not found"}, status = status_code)
     def match(self, request, *args, **kwargs):
         wishes_data = list(Wishes.objects.filter(id_user=kwargs['id_wants']).values_list('id_book', flat=True))
-
+        if not wishes_data:
+            return Response([])
         book_list = []
         for i in wishes_data:
 
@@ -95,7 +98,6 @@ class WishesView(viewsets.ModelViewSet):
             for j in archive_data:
                 book_list.append(j)
         return Response(book_list)
-
 
 
 class ArchiveView(viewsets.ModelViewSet):
@@ -129,5 +131,3 @@ class ArchiveView(viewsets.ModelViewSet):
         else:
             status_code = status.HTTP_400_BAD_REQUEST
             return Response({"message": "Product data not found"}, status = status_code)
-
-

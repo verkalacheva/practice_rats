@@ -12,9 +12,10 @@ urlpatterns = [
     path('wishes/get/<int:id_user>', WishesView.as_view({'get': 'retrieve'}), name='wishes-by-user'),
     path('wishes/add', WishesView.as_view({'post': 'create'}), name='add-wish'),
     path('wishes/delete/<int:id_book>/<int:id_user>', WishesView.as_view({'delete': 'destroy'}), name='delete-wish'),
-    path('archive/list', ArchiveView.as_view({'get': 'list'}), name='all-wishes'),
+    path('archive/list', ArchiveView.as_view({'get': 'list'}), name='all-archive'),
     path('archive/get/<int:id_user>', ArchiveView.as_view({'get': 'retrieve'}), name='archive-by-id'),
     path('archive/add', ArchiveView.as_view({'post': 'create'}), name='add'),
     path('archive/delete/<int:id_book>/<int:id_user>', ArchiveView.as_view({'delete': 'destroy'}), name='all-bo'),
-    path('wishes/match/<int:id_wants>/', WishesView.as_view({'get' : 'match'}), name='matching')
+    path('wishes/match/<int:id_wants>/', WishesView.as_view({'get' : 'match'}), name='matching'),
+
 ]

@@ -1,20 +1,18 @@
 from django.db import models
 
-from django.contrib.auth.models import User
-
-
 class Offer(models.Model):
     STATUS_CHOICES = (
+        ('предложена', 'Предложена'),
+        ('скрыта', 'Скрыта'),
+        ('отправлена', 'Отправлена'),
         ('принята', 'Принята'),
         ('отклонена', 'Отклонена'),
-        ('отправлена', 'Отправлена')
-
     )
     id = models.AutoField(primary_key=True)
     id_from = models.IntegerField()
     id_to = models.IntegerField()
     id_book = models.IntegerField()
-    id_status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='Отправлена')
+    id_status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='Предложена')
 
 
 class Meta:

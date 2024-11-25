@@ -7,5 +7,6 @@ urlpatterns = [
     path('offers/get/<int:id_to>/', OfferView.as_view({'get': 'retrieve_to'}), name='offers-to-user'),
     path('offers/get/<int:id_status>/', OfferView.as_view({'get': 'retrieve_status'}), name='offers-by-status'),
     path('offers/create', OfferView.as_view({'post': 'create'}), name='create-offer'),
-    path('offers/delete/<int:id>', OfferView.as_view({'delete': 'destroy'}), name='delete-offer')
+    path('offers/delete/<int:id>', OfferView.as_view({'delete': 'destroy'}), name='delete-offer'),
+    path('offers/init/<int:from_whom>', OfferView.as_view({'post': 'init_offers'}), name='init-offers'),
 ]
